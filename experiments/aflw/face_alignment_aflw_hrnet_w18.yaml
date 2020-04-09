@@ -4,9 +4,9 @@ PRINT_FREQ: 50
 
 DATASET:
   DATASET: AFLW
-  ROOT: './data/aflw/images/'
-  TRAINSET: './data/aflw/face_landmarks_aflw_train.csv'
-  TESTSET: './data/aflw/face_landmarks_aflw_test.csv'
+  ROOT: '../data/aflw/images/'
+  TRAINSET: '../data/aflw/face_landmarks_aflw_train.csv'
+  TESTSET: '../data/aflw/face_landmarks_aflw_test_frontal.csv'
   FLIP: true
   SCALE_FACTOR: 0.25
   ROT_FACTOR: 30

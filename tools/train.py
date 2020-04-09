@@ -21,6 +21,7 @@ from lib.config import config, update_config
 from lib.datasets import get_dataset
 from lib.core import function
 from lib.utils import utils
+import time
 
 
 def parse_args():
@@ -70,6 +71,7 @@ def main():
     if config.TRAIN.RESUME:
         model_state_file = os.path.join(final_output_dir,
                                         'latest.pth')
+        # print(model_state_file)
         if os.path.islink(model_state_file):
             checkpoint = torch.load(model_state_file)
             last_epoch = checkpoint['epoch']
@@ -133,7 +135,7 @@ def main():
              }, predictions, is_best, final_output_dir, 'checkpoint_{}.pth'.format(epoch))
 
     final_model_state_file = os.path.join(final_output_dir,
-                                          'final_state.pth')
+                                          'final_state_{}.pth'.format(time.strftime("%Y%m%d-%H%M%S")))
     logger.info('saving final model state to {}'.format(
         final_model_state_file))
     torch.save(model.module.state_dict(), final_model_state_file)
