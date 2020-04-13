@@ -25,6 +25,8 @@ The model is trained on COFW *train* and evaluated on COFW *test*.
 | Model | NME | FR<sub>0.1</sub>|pretrained model|model|
 |:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18  | 3.45 | 0.20 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | [HR18-COFW.pth](https://1drv.ms/u/s!AiWjZ1LamlxzdFIsEUQl8jgUaMk)|
+|HRNetV2-W18(reproduced) | 3.45 | 0.20 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-COFW.pth|
+|HRNetV2-W18-SE(reduction=16) | 3.45 | 0.39 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-COFW-SE.pth|
 
 
 ### AFLW
@@ -33,12 +35,15 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | Model | NME<sub>*full*</sub> | NME<sub>*frontal*</sub> | pretrained model|model|
 |:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 | 1.57 | 1.46 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | [HR18-AFLW.pth](https://1drv.ms/u/s!AiWjZ1Lamlxzc7xumEw810iBLTc)|
+|HRNetV2-W18(reproduced) | 1.57 | 1.45 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-AFLW.pth|
 
 ### WFLW
 
 | NME |  *test* | *pose* | *illumination* | *occlution* | *blur* | *makeup* | *expression* | pretrained model|model|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 | 4.60 | 7.86 | 4.57 | 5.42 | 5.36 | 4.26 | 4.78 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | [HR18-WFLW.pth](https://1drv.ms/u/s!AiWjZ1LamlxzdTsr_9QZCwJsn5U)|
+|HRNetV2-W18(reproduced) | 4.60 | 7.88 | 5.38 | 5.44 | 5.38 | 4.28 | 4.77 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-WFLW.pth|
+|HRNetV2-W18-SE(reduction=16) | 4.63 | 7.85 | 4.56 | 5.41 | 5.31 | 4.32 | 4.89 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-WFLW-SE.pth|
 
 
 ### 300W
@@ -46,6 +51,27 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | NME | *common*| *challenge* | *full* | *test*|  pretrained model|model|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 | 2.91 | 5.11 | 3.34 | 3.85 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | [HR18-300W.pth](https://1drv.ms/u/s!AiWjZ1LamlxzeYLmza1XU-4WhnQ)|
+|HRNetV2-W18(reproduced) | 2.95 | 5.12 | 3.37 | 3.96 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-300W.pth|
+
+#### HRNet-SE
+| Model | reduction | *common*| *challenge* | *full* | *test*|
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |1| 2.97 | 5.23 | 3.41 | 3.97 | 
+|HRNetV2-W18 |2| 2.94 | 5.18 | 3.38 | 3.92 | 
+|HRNetV2-W18 |3| 2.95 | 5.16 | 3.38 | 3.96 | 
+|HRNetV2-W18 |4| 2.92 | 5.20 | 3.37 | 3.96 | 
+|HRNetV2-W18 |5| 2.96 | 5.16 | 3.39 | 3.95 | 
+|HRNetV2-W18 |6| 2.95 | 5.23 | 3.40 | 3.93 | 
+|HRNetV2-W18 |7| 2.95 | 5.15 | 3.38 | 3.93 | 
+|HRNetV2-W18 |8| 2.97 | 5.21 | 3.41 | 3.98 | 
+|HRNetV2-W18 |9| 2.96 | 5.27 | 3.341 | 4.00 | 
+|HRNetV2-W18 |10| 2.94 | 5.23 | 3.39 | 3.98 | 
+|HRNetV2-W18 |11| 2.93 | 5.24 | 3.38 | 3.96 | 
+|HRNetV2-W18 |12| 2.95 | 5.10 | 3.37 | 3.96 |
+|HRNetV2-W18 |13| 2.96 | 5.26 | 3.41 | 3.99 | 
+|HRNetV2-W18 |14| 2.93 | 5.26 | 3.39 | 3.99 | 
+|HRNetV2-W18 |15| 2.92 | 5.19 | 3.37 | 3.94 | 
+|HRNetV2-W18 |16| 2.96 | 5.26 | 3.41 | 3.98 | 
 
 
 ![](images/face.png)

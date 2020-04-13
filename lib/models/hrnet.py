@@ -322,7 +322,7 @@ class HighResolutionNet(nn.Module):
                 padding=1 if extra.FINAL_CONV_KERNEL == 3 else 0)
         )
 
-        self.se = SELayer(config.MODEL.NUM_JOINTS, reduction=15)
+        self.se = SELayer(config.MODEL.NUM_JOINTS, reduction=16)
 
     def _make_transition_layer(
             self, num_channels_pre_layer, num_channels_cur_layer):
@@ -447,7 +447,11 @@ class HighResolutionNet(nn.Module):
         x3 = F.interpolate(x[3], size=(height, width), mode='bilinear', align_corners=False)
         x = torch.cat([x[0], x1, x2, x3], 1)
         x = self.head(x)
+
+        residual = x
+
         x = self.se(x)
+        x += residual
 
         return x
 
