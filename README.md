@@ -73,6 +73,26 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |HRNetV2-W18 |15| 2.92 | 5.19 | 3.37 | 3.94 | 
 |HRNetV2-W18 |16| 2.96 | 5.26 | 3.41 | 3.98 | 
 
+#### HRNet-SE + residual
+| Model | reduction | *common*| *challenge* | *full* | *test*|
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |1| 2.97 | 5.20 | 3.41 | 3.93 | 
+|HRNetV2-W18 |2| 2.93 | 5.15 | 3.37 | 3.99 | 
+|HRNetV2-W18 |3| 2.97 | 5.15 | 3.39 | 3.97 | 
+|HRNetV2-W18 |4| 2.93 | 5.20 | 3.38 | 3.93 | 
+|HRNetV2-W18 |5| 2.95 | 5.15 | 3.38 | 3.94 | 
+|HRNetV2-W18 |6| 2.93 | 5.25 | 3.39 | 3.95 | 
+|HRNetV2-W18 |7| 2.96 | 5.18 | 3.39 | 3.97 | 
+|HRNetV2-W18 |8| 2.92 | 5.21 | 3.37 | 3.96 | 
+|HRNetV2-W18 |9| 2.94 | 5.20 | 3.38 | 3.98 | 
+|HRNetV2-W18 |10| 2.95 | 5.13 | 3.37 | 3.97 | 
+|HRNetV2-W18 |11| 2.93 | 5.16 | 3.37 | 3.93 | 
+|HRNetV2-W18 |12| 2.94 | 5.11 | 3.37 | 3.94 |
+|HRNetV2-W18 |13| 2.94 | 5.28 | 3.40 | 4.01 | 
+|HRNetV2-W18 |14| 2.96 | 5.20 | 3.40 | 3.97 | 
+|HRNetV2-W18 |15| 2.95 | 5.15 | 3.38 | 3.92 | 
+|HRNetV2-W18 |16| 2.94 | 5.18 | 3.38 | 4.01 |
+
 
 ![](images/face.png)
 
@@ -186,4 +206,3 @@ If you find this work or code is helpful in your research, please cite:
 ## Reference
 [1] Deep High-Resolution Representation Learning for Visual Recognition. Jingdong Wang, Ke Sun, Tianheng Cheng, 
     Borui Jiang, Chaorui Deng, Yang Zhao, Dong Liu, Yadong Mu, Mingkui Tan, Xinggang Wang, Wenyu Liu, Bin Xiao. Accepted by TPAMI.  [download](https://arxiv.org/pdf/1908.07919.pdf)
-
