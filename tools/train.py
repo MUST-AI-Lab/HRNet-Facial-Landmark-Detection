@@ -30,6 +30,7 @@ def parse_args():
 
     parser.add_argument('--cfg', help='experiment configuration filename',
                         required=True, type=str)
+    parser.add_argument('--seed', type=int, default=0, help='random seed')
 
     args = parser.parse_args()
     update_config(config, args)
@@ -46,9 +47,11 @@ def main():
     logger.info(pprint.pformat(args))
     logger.info(pprint.pformat(config))
 
+    torch.manual_seed(args.seed)
     cudnn.benchmark = config.CUDNN.BENCHMARK
     cudnn.determinstic = config.CUDNN.DETERMINISTIC
     cudnn.enabled = config.CUDNN.ENABLED
+    torch.cuda.manual_seed(args.seed)
 
     model = models.get_face_alignment_net(config)
 
@@ -135,7 +138,7 @@ def main():
              }, predictions, is_best, final_output_dir, 'checkpoint_{}.pth'.format(epoch))
 
     final_model_state_file = os.path.join(final_output_dir,
-                                          'final_state_{}.pth'.format(time.strftime("%Y%m%d-%H%M%S")))
+                                          'final_state_{}_seed{}.pth'.format(time.strftime("%Y%m%d-%H%M%S"), args.seed))
     logger.info('saving final model state to {}'.format(
         final_model_state_file))
     torch.save(model.module.state_dict(), final_model_state_file)

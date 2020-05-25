@@ -303,9 +303,9 @@ class HighResolutionNet(nn.Module):
         self.stage4, pre_stage_channels = self._make_stage(
             self.stage4_cfg, num_channels, multi_scale_output=True)
 
-        final_inp_channels = sum(pre_stage_channels)
+        final_inp_channels = 3 * sum(pre_stage_channels) - 144
 
-        self.se = SELayer(final_inp_channels, reduction=16)
+        self.se = SELayer(final_inp_channels, reduction=4)
 
         self.head = nn.Sequential(
             nn.Conv2d(
@@ -431,6 +431,9 @@ class HighResolutionNet(nn.Module):
             else:
                 x_list.append(y_list[i])
         y_list = self.stage3(x_list)
+        stage2_x0 = x_list[0]
+        stage2_x1 = x_list[1]
+        stage2_x2 = x_list[2]
 
         x_list = []
         for i in range(self.stage4_cfg['NUM_BRANCHES']):
@@ -442,14 +445,22 @@ class HighResolutionNet(nn.Module):
 
         # Head Part
         height, width = x[0].size(2), x[0].size(3)
+        stage2_x1 = F.interpolate(stage2_x1, size=(height, width), mode='bilinear', align_corners=False)
+        stage2_x2 = F.interpolate(stage2_x2, size=(height, width), mode='bilinear', align_corners=False)
+
+        stage3_x1 = F.interpolate(x_list[1], size=(height, width), mode='bilinear', align_corners=False)
+        stage3_x2 = F.interpolate(x_list[2], size=(height, width), mode='bilinear', align_corners=False)
+        stage3_x3 = F.interpolate(x_list[3], size=(height, width), mode='bilinear', align_corners=False)
+
         x1 = F.interpolate(x[1], size=(height, width), mode='bilinear', align_corners=False)
         x2 = F.interpolate(x[2], size=(height, width), mode='bilinear', align_corners=False)
         x3 = F.interpolate(x[3], size=(height, width), mode='bilinear', align_corners=False)
-        x = torch.cat([x[0], x1, x2, x3], 1)
+        x = torch.cat([x[0], x1, x2, x3, x_list[0], stage3_x1, stage3_x2, stage3_x3,
+                       stage2_x0, stage2_x1, stage2_x2], 1)
 
-        # residual = x
+        residual = x
         x = self.se(x)
-        # x += residual
+        x += residual
 
         x = self.head(x)
 
@@ -457,6 +468,7 @@ class HighResolutionNet(nn.Module):
 
     def init_weights(self, pretrained=''):
         logger.info('=> init weights from normal distribution')
+
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 # nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')

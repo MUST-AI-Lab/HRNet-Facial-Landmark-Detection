@@ -46,6 +46,10 @@ class FeatureExtractor():
         x = self.model.relu(x)
         x = self.model.layer1(x)
 
+        # stage1
+        # x.register_hook(self.save_gradient)
+        # outputs += [x]
+
         x_list = []
         for i, m in enumerate(self.model.transition1):
             if m is not None:
@@ -53,6 +57,12 @@ class FeatureExtractor():
             else:
                 x_list.append(x)
         y_list = self.model.stage2(x_list)
+
+        # stage2
+        # y_list[0].register_hook(self.save_gradient)
+        # y_list[1].register_hook(self.save_gradient)
+        # outputs += [y_list[0]]
+        # outputs += [y_list[1]]
 
         x_list = []
         for i, m in enumerate(self.model.transition2):
@@ -62,6 +72,7 @@ class FeatureExtractor():
                 x_list.append(y_list[i])
         y_list = self.model.stage3(x_list)
 
+        # stage3
         y_list[0].register_hook(self.save_gradient)
         y_list[1].register_hook(self.save_gradient)
         y_list[2].register_hook(self.save_gradient)
@@ -83,10 +94,12 @@ class FeatureExtractor():
         x3 = F.interpolate(x[3], size=(height, width), mode='bilinear', align_corners=False)
         x = torch.cat([x[0], x1, x2, x3], 1)
 
-        # residual = x
-        # x = self.model.se(x)
-        # x += residual
+        # se
+        residual = x
+        x = self.model.se(x)
+        x += residual
 
+        # stage4
         # x.register_hook(self.save_gradient)
         # outputs += [x]
 
@@ -148,7 +161,7 @@ def show_cam_on_image(img, mask):
     heatmap = np.float32(heatmap) / 255
     cam = heatmap + np.float32(img)
     cam = cam / np.max(cam)
-    cv2.imwrite("../examples/sum_cam.jpg", np.uint8(255 * cam))
+    cv2.imwrite("../examples/sum_cam_se4_stage3_.jpg", np.uint8(255 * cam))
 
 
 class GradCam:
@@ -203,6 +216,7 @@ class GradCam:
 
         # one_hot.backward(weights0, retain_graph=True)
 
+        # stage4/stage1
         # grads_val = self.extractor.get_gradients()[-1].cpu().data.numpy()
 
         # stage3
@@ -213,6 +227,13 @@ class GradCam:
         grad_stage3_x = torch.cat([self.extractor.get_gradients()[2], grad_stage3_x1, grad_stage3_x2], 1)
         grad_stage3_x = grad_stage3_x.cpu().data.numpy()
 
+        # stage2
+        # grad_stage2_x1 = F.interpolate(self.extractor.get_gradients()[0], size=(64, 64), mode='bilinear',
+        #                                align_corners=False)
+        # grad_stage2_x = torch.cat([self.extractor.get_gradients()[1], grad_stage2_x1], 1)
+        # grad_stage2_x = grad_stage2_x.cpu().data.numpy()
+
+        # stage4/stage1
         # target = features[-1]
         # target = target.cpu().data.numpy()[0, :]
 
@@ -225,10 +246,20 @@ class GradCam:
 
         target = stage3_x.cpu().data.numpy()[0, :]
 
+        # stage2
+        # stage2_x1 = features[1]
+        #
+        # stage2_x1 = F.interpolate(stage2_x1, size=(64, 64), mode='bilinear', align_corners=False)
+        # stage2_x = torch.cat([features[0], stage2_x1], 1)
+        #
+        # target = stage2_x.cpu().data.numpy()[0, :]
+
         # element-wise
+        # stage4/stage1
         # cam = grads_val[0] * target
         # cam = np.sum(cam, axis=0)
 
+        # modify the target stage
         cam = grad_stage3_x[0] * target
         cam = np.sum(cam, axis=0)
 
