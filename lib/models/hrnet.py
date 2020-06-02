@@ -17,6 +17,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from lib.models.se_module import SELayer
+# from lib.models.non_local_embedded_gaussian import NONLocalBlock2D
+# from lib.models.non_local_gaussian import NONLocalBlock2D
+from lib.models.non_local_concatenation import NONLocalBlock2D
+# from lib.models.non_local_dot_product import NONLocalBlock2D
+from .cbam import *
+from .bam import *
 
 import matplotlib.pyplot as plt
 
@@ -303,9 +309,12 @@ class HighResolutionNet(nn.Module):
         self.stage4, pre_stage_channels = self._make_stage(
             self.stage4_cfg, num_channels, multi_scale_output=True)
 
-        final_inp_channels = 3 * sum(pre_stage_channels) - 144
+        final_inp_channels = sum(pre_stage_channels)
 
-        self.se = SELayer(final_inp_channels, reduction=4)
+        # self.se = SELayer(final_inp_channels, reduction=4)
+        # self.non_local = NONLocalBlock2D(in_channels=final_inp_channels)
+        # self.cbam = CBAM(final_inp_channels, 4)
+        self.bam = BAM(final_inp_channels)
 
         self.head = nn.Sequential(
             nn.Conv2d(
@@ -423,6 +432,8 @@ class HighResolutionNet(nn.Module):
             else:
                 x_list.append(x)
         y_list = self.stage2(x_list)
+        # stage1_x0 = x_list[0]
+        # stage1_x1 = x_list[1]
 
         x_list = []
         for i in range(self.stage3_cfg['NUM_BRANCHES']):
@@ -431,9 +442,9 @@ class HighResolutionNet(nn.Module):
             else:
                 x_list.append(y_list[i])
         y_list = self.stage3(x_list)
-        stage2_x0 = x_list[0]
-        stage2_x1 = x_list[1]
-        stage2_x2 = x_list[2]
+        # stage2_x0 = x_list[0]
+        # stage2_x1 = x_list[1]
+        # stage2_x2 = x_list[2]
 
         x_list = []
         for i in range(self.stage4_cfg['NUM_BRANCHES']):
@@ -445,22 +456,27 @@ class HighResolutionNet(nn.Module):
 
         # Head Part
         height, width = x[0].size(2), x[0].size(3)
-        stage2_x1 = F.interpolate(stage2_x1, size=(height, width), mode='bilinear', align_corners=False)
-        stage2_x2 = F.interpolate(stage2_x2, size=(height, width), mode='bilinear', align_corners=False)
+        # stage1_x1 = F.interpolate(stage1_x1, size=(height, width), mode='bilinear', align_corners=False)
 
-        stage3_x1 = F.interpolate(x_list[1], size=(height, width), mode='bilinear', align_corners=False)
-        stage3_x2 = F.interpolate(x_list[2], size=(height, width), mode='bilinear', align_corners=False)
-        stage3_x3 = F.interpolate(x_list[3], size=(height, width), mode='bilinear', align_corners=False)
+        # stage2_x1 = F.interpolate(stage2_x1, size=(height, width), mode='bilinear', align_corners=False)
+        # stage2_x2 = F.interpolate(stage2_x2, size=(height, width), mode='bilinear', align_corners=False)
+
+        # stage3_x1 = F.interpolate(x_list[1], size=(height, width), mode='bilinear', align_corners=False)
+        # stage3_x2 = F.interpolate(x_list[2], size=(height, width), mode='bilinear', align_corners=False)
+        # stage3_x3 = F.interpolate(x_list[3], size=(height, width), mode='bilinear', align_corners=False)
 
         x1 = F.interpolate(x[1], size=(height, width), mode='bilinear', align_corners=False)
         x2 = F.interpolate(x[2], size=(height, width), mode='bilinear', align_corners=False)
         x3 = F.interpolate(x[3], size=(height, width), mode='bilinear', align_corners=False)
-        x = torch.cat([x[0], x1, x2, x3, x_list[0], stage3_x1, stage3_x2, stage3_x3,
-                       stage2_x0, stage2_x1, stage2_x2], 1)
+        x = torch.cat([x[0], x1, x2, x3], 1)
 
-        residual = x
-        x = self.se(x)
-        x += residual
+        # residual = x
+        # x = self.se(x)
+        # x += residual
+
+        # x = self.non_local(x)
+        # x = self.cbam(x)
+        x = self.bam(x)
 
         x = self.head(x)
 

@@ -39,7 +39,7 @@
 |HRNetV2-W18 |15| 2.94 | 5.31 | 3.40 | 3.95 | 
 |HRNetV2-W18 |16| 2.94 | 5.26 | 3.40 | 3.96 |
 
-#### HRNet-SE + residual + seed
+## HRNet-SE + residual + seed
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |4| 2.93 | 5.16 | 3.37 | 3.97 | 111 |
@@ -52,3 +52,30 @@
 |HRNetV2-W18 |16| 2.95 | 5.30 | 3.39 | 3.95 | 111 |
 |HRNetV2-W18 |16| 2.94 | 5.20 | 3.39 | 3.96 | 222 |
 |HRNetV2-W18 |16| 2.94 | 5.26 | 3.39 | 3.94 | 333 |
+
+## HRNet-SE + residual + feature fusion
+| Model | reduction | *common*| *challenge* | *full* | *test*| seed | stage |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |4| 2.96 | 5.21 | 3.40 | 3.94 | 111 | 3+4 |
+|HRNetV2-W18 |4| 2.97 | 5.27 | 3.42 | 3.95 | 111 | 2+3+4 |
+|HRNetV2-W18 |4| 2.96 | 5.18 | 3.39 | 4.02 | 111 | 1+2+3+4 |
+
+## HRNet-NonLocal
+| Model | f | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|HRNetV2-W18 |Gaussian, embed| 2.95 | 5.18 | 3.38 | 3.96 | 111 |
+|HRNetV2-W18 |Gaussian| 2.92 | 5.19 | 3.36 | 4.00 | 111 |
+|HRNetV2-W18 |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
+|HRNetV2-W18 |concatenation| - | - | - | - | - |
+
+## HRNet-CBAM/BAM
+| Model | reduction | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|HRNetV2-W18-CBAM |4| 2.98 | 5.25 | 3.42 | 3.93 | 111 |
+|HRNetV2-W18-BAM |4| 2.92 | 5.18 | 3.36 | 3.98 | 111 |
+|HRNetV2-W18-CBAM |8| 2.96 | 5.21 | 3.40 | 3.95 | 111 |
+|HRNetV2-W18-BAM |8| 2.97 | 5.20 | 3.40 | 3.97 | 111 |
+|HRNetV2-W18-CBAM |16| 2.92 | 5.20 | 3.37 | 3.93 | 111 |
+|HRNetV2-W18-BAM |16| 2.94 | 5.20 | 3.38 | 3.96 | 111 |
