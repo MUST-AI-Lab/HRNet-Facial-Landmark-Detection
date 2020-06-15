@@ -58,7 +58,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | Model | Initialization | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18 |normal| 2.99 | 5.21 | 3.43 | 4。08 | 111 |
+|HRNetV2-W18 |normal| 2.99 | 5.21 | 3.43 | 4.08 | 111 |
 |HRNetV2-W18 |Xavier| 28.57 | 48.20 | 32.42 | 36.85 | 111 |
 |HRNetV2-W18 |kaiming| 82.42 | 94.87 | 84.86 | 84.79 | 111 |
 
