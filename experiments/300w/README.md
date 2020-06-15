@@ -64,10 +64,10 @@
 | Model | f | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18 |Gaussian, embed| 2.95 | 5.18 | 3.38 | 3.96 | 111 |
-|HRNetV2-W18 |Gaussian| 2.92 | 5.19 | 3.36 | 4.00 | 111 |
-|HRNetV2-W18 |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
-|HRNetV2-W18 |concatenation| - | - | - | - | - |
+|HRNetV2-W18-NonLocal |Gaussian, embed| 2.95 | 5.18 | 3.38 | 3.96 | 111 |
+|HRNetV2-W18-NonLocal |Gaussian| 2.92 | 5.19 | 3.36 | 4.00 | 111 |
+|HRNetV2-W18-NonLocal |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
+|HRNetV2-W18-NonLocal |concatenation| - | - | - | - | - |
 
 ## HRNet-CBAM/BAM
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |
@@ -79,3 +79,20 @@
 |HRNetV2-W18-BAM |8| 2.97 | 5.20 | 3.40 | 3.97 | 111 |
 |HRNetV2-W18-CBAM |16| 2.92 | 5.20 | 3.37 | 3.93 | 111 |
 |HRNetV2-W18-BAM |16| 2.94 | 5.20 | 3.38 | 3.96 | 111 |
+
+## Integrating in resdiual unit
+| Model | reduction | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|HRNetV2-W18-SE |16| 2.97 | 5.23 | 3.41 | 3.98 | 111 |
+|HRNetV2-W18-CBAM |16| 2.96 | 5.28 | 3.42 | 4.06 | 111 |
+|HRNetV2-W32-SE |16| 2.98 | 5.21 | 3.41 | 4.01 | 111 |
+|HRNetV2-W32-CBAM |16| 2.98 | 5.24 | 3.42 | 4.02 | 111 |
+
+## Train from scratch
+| Model | Initialization | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|HRNetV2-W18 |normal| 2.99 | 5.21 | 3.43 | 4。08 | 111 |
+|HRNetV2-W18 |Xavier| 28.57 | 48.20 | 32.42 | 36.85 | 111 |
+|HRNetV2-W18 |kaiming| 82.42 | 94.87 | 84.86 | 84.79 | 111 |

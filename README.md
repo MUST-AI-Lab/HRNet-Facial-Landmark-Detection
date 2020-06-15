@@ -52,6 +52,24 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 | 2.91 | 5.11 | 3.34 | 3.85 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | [HR18-300W.pth](https://1drv.ms/u/s!AiWjZ1LamlxzeYLmza1XU-4WhnQ)|
 |HRNetV2-W18(reproduced) | 2.95 | 5.12 | 3.37 | 3.96 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-300W.pth|
+|HRNetV2-W32(reproduced) | 2.98 | 5.14 | 3.40 | 3.96 | [HRNetV2-W32](https://onedrive.live.com/?authkey=%21AEwfaSueYurmSRA&id=56B9F9C97F261712%2111776&cid=56B9F9C97F261712) | HR32-300W.pth|
+
+#### Train from scratch
+| Model | Initialization | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|HRNetV2-W18 |normal| 2.99 | 5.21 | 3.43 | 4。08 | 111 |
+|HRNetV2-W18 |Xavier| 28.57 | 48.20 | 32.42 | 36.85 | 111 |
+|HRNetV2-W18 |kaiming| 82.42 | 94.87 | 84.86 | 84.79 | 111 |
+
+#### Integrating in resdiual unit
+| Model | reduction | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|HRNetV2-W18-SE |16| 2.97 | 5.23 | 3.41 | 3.98 | 111 |
+|HRNetV2-W18-CBAM |16| 2.96 | 5.28 | 3.42 | 4.06 | 111 |
+|HRNetV2-W32-SE |16| 2.98 | 5.21 | 3.41 | 4.01 | 111 |
+|HRNetV2-W32-CBAM |16| 2.98 | 5.24 | 3.42 | 4.02 | 111 |
 
 #### HRNet-SE + residual
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |
@@ -81,10 +99,10 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | Model | f | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18 |Gaussian, embed| 2.95 | 5.18 | 3.38 | 3.96 | 111 |
-|HRNetV2-W18 |Gaussian| 2.92 | 5.19 | 3.36 | 4.00 | 111 |
-|HRNetV2-W18 |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
-|HRNetV2-W18 |concatenation| - | - | - | - | - |
+|HRNetV2-W18-NonLocal |Gaussian, embed| 2.95 | 5.18 | 3.38 | 3.96 | 111 |
+|HRNetV2-W18-NonLocal |Gaussian| 2.92 | 5.19 | 3.36 | 4.00 | 111 |
+|HRNetV2-W18-NonLocal |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
+|HRNetV2-W18-NonLocal |concatenation| - | - | - | - | - |
 
 #### HRNet-CBAM/BAM
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |

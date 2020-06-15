@@ -112,3 +112,4 @@ hrnetv2_pretrained/
 output
 log
 *.swp
+/examples/

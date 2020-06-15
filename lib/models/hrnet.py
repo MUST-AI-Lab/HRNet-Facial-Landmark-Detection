@@ -23,6 +23,7 @@ from lib.models.non_local_concatenation import NONLocalBlock2D
 # from lib.models.non_local_dot_product import NONLocalBlock2D
 from .cbam import *
 from .bam import *
+from .dna_module import DNA
 
 import matplotlib.pyplot as plt
 
@@ -40,15 +41,19 @@ def conv3x3(in_planes, out_planes, stride=1):
 class BasicBlock(nn.Module):
     expansion = 1
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None):
+    def __init__(self, inplanes, planes, stride=1, downsample=None, reduction=16):
         super(BasicBlock, self).__init__()
         self.conv1 = conv3x3(inplanes, planes, stride)
         self.bn1 = BatchNorm2d(planes, momentum=BN_MOMENTUM)
         self.relu = nn.ReLU(inplace=True)
         self.conv2 = conv3x3(planes, planes)
         self.bn2 = BatchNorm2d(planes, momentum=BN_MOMENTUM)
+        # self.se = SELayer(planes, reduction)
+        # self.dna = DNA(planes, reduction)
         self.downsample = downsample
         self.stride = stride
+
+        # self.cbam = CBAM(planes, 16)
 
     def forward(self, x):
         residual = x
@@ -59,9 +64,12 @@ class BasicBlock(nn.Module):
 
         out = self.conv2(out)
         out = self.bn2(out)
+        # out = self.se(out)
 
         if self.downsample is not None:
             residual = self.downsample(x)
+
+        # out = self.cbam(out)
 
         out += residual
         out = self.relu(out)
@@ -72,7 +80,7 @@ class BasicBlock(nn.Module):
 class Bottleneck(nn.Module):
     expansion = 4
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None):
+    def __init__(self, inplanes, planes, stride=1, downsample=None, reduction=16):
         super(Bottleneck, self).__init__()
         self.conv1 = nn.Conv2d(inplanes, planes, kernel_size=1, bias=False)
         self.bn1 = BatchNorm2d(planes, momentum=BN_MOMENTUM)
@@ -84,8 +92,12 @@ class Bottleneck(nn.Module):
         self.bn3 = BatchNorm2d(planes * self.expansion,
                                momentum=BN_MOMENTUM)
         self.relu = nn.ReLU(inplace=True)
+        # self.se = SELayer(planes * 4, reduction)
+        # self.dna = DNA(planes*4, reduction)
         self.downsample = downsample
         self.stride = stride
+
+        # self.cbam = CBAM(planes * 4, 16)
 
     def forward(self, x):
         residual = x
@@ -100,9 +112,12 @@ class Bottleneck(nn.Module):
 
         out = self.conv3(out)
         out = self.bn3(out)
+        # out = self.se(out)
 
         if self.downsample is not None:
             residual = self.downsample(x)
+
+        # out = self.cbam(out)
 
         out += residual
         out = self.relu(out)
@@ -314,7 +329,7 @@ class HighResolutionNet(nn.Module):
         # self.se = SELayer(final_inp_channels, reduction=4)
         # self.non_local = NONLocalBlock2D(in_channels=final_inp_channels)
         # self.cbam = CBAM(final_inp_channels, 4)
-        self.bam = BAM(final_inp_channels)
+        # self.bam = BAM(final_inp_channels)
 
         self.head = nn.Sequential(
             nn.Conv2d(
@@ -476,7 +491,7 @@ class HighResolutionNet(nn.Module):
 
         # x = self.non_local(x)
         # x = self.cbam(x)
-        x = self.bam(x)
+        # x = self.bam(x)
 
         x = self.head(x)
 
@@ -489,6 +504,7 @@ class HighResolutionNet(nn.Module):
             if isinstance(m, nn.Conv2d):
                 # nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
                 nn.init.normal_(m.weight, std=0.001)
+                # nn.init.xavier_normal_(m.weight)
                 # nn.init.constant_(m.bias, 0)
             elif isinstance(m, nn.BatchNorm2d):
                 nn.init.constant_(m.weight, 1)
