@@ -54,6 +54,15 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |HRNetV2-W18(reproduced) | 2.95 | 5.12 | 3.37 | 3.96 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-300W.pth|
 |HRNetV2-W32(reproduced) | 2.98 | 5.14 | 3.40 | 3.96 | [HRNetV2-W32](https://onedrive.live.com/?authkey=%21AEwfaSueYurmSRA&id=56B9F9C97F261712%2111776&cid=56B9F9C97F261712) | HR32-300W.pth|
 
+#### Darts pretrained on CIFAR-10
+| Model | Input/Output Size | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|HRNetV2-W18 |256/64| 2.91 | 5.11 | 3.34 | 3.85 | - |
+|Darts-Layer8 |256/64| 4.76 | 13.00 | 6.37 | 9.22 | 111 |
+|Darts-Layer8 |128/32| 3.61 | 6.19 | 4.11 | 4.91 | 111 |
+|Darts-Layer20 |128/32| 3.45 | 5.85 | 3.92 | 4.69 | 111 |
+|HRNetV2-W18 |128/32| 3.35 | 5.53 | 3.78 | 4.23 | 111 |
+
 #### Train from scratch
 | Model | Initialization | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
