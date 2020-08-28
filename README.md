@@ -72,7 +72,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 
 ##### Multi-Scale
 | Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | normal |1 | x1 | 4.04 | 6.78 | 4.58 | 5.38 | 111 |
 |4 | normal |2 | x1 | 3.30 | 6.18 | 3.87 | 4.71 | 111 |
 
