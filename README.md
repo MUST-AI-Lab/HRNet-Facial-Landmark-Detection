@@ -70,6 +70,29 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |10|normal | x2 | 3.47 | 6.01 | 3.96 | 4.79 | 111 |
 |10|normal | x4 | 3.38 | 5.94 | 3.88 | 4.63 | 111 |
 
+Search Space: Original (Initialize by normal)
+| Stack Num | update alpha(epoch) | transition| search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|7 |0-20  | 1 | 20.87 | 3.67| 6.93 | 4.31 | 5.29 | 111 |
+|7 |0-20  | 2 | 26.09 | 3.50| 6.15 | 4.02 | 4.83 | 111 |
+|7 |10-30 | 2 | 24.28 | 3.48| 6.11 | 4.00 | 4.80 | 111 |
+
+Search Space: HRNet (Initialize by normal)
+| Stack Num | +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|7 |-          | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
+|7 |smoothdarts| 12.67 | 4.69| 7.65 | 5.27 | 6.24 | 111 |
+|7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
+|7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
+
+Search Space: HRNet + DARTS ops (Initialize by he_fout)
+| Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | 1 | 100.88 | 93.51| 107.42 | 96.23 | 95.36 | 111 |
+|7 | 1 | 156.61  | 102.26| 117.01 | 105.15 | 105.65 | 111 |
+|4 | 2 | 160.19 | 84.96| 97.96 | 87.50 | 88.26 | 111 |
+|7 | 2 | 140.24 | 94.74| 106.02 | 96.95 | 96.63 | 111 |
+
 ##### Multi-Scale
 | Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
