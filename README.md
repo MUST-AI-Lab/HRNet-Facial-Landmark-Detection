@@ -54,6 +54,15 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |HRNetV2-W18(reproduced) | 2.95 | 5.12 | 3.37 | 3.96 | [HRNetV2-W18](https://1drv.ms/u/s!Aus8VCZ_C_33cMkPimlmClRvmpw) | HR18-300W.pth|
 |HRNetV2-W32(reproduced) | 2.98 | 5.14 | 3.40 | 3.96 | [HRNetV2-W32](https://onedrive.live.com/?authkey=%21AEwfaSueYurmSRA&id=56B9F9C97F261712%2111776&cid=56B9F9C97F261712) | HR32-300W.pth|
 
+#### DenseNAS：darts cell based
+(Initialize by kmnormal_fanout)
+| Sum/Concat | Search Space | Search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|Sum    |HRNet   | 130.38 |       |       | 106.08 |       | 111 |
+|Concat |HRNet   | 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
+|Sum    |DenseNAS| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
+|Concat |DenseNAS| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
+
 #### Densenas(Stage 4)
 | Stack Num | Initialization | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
