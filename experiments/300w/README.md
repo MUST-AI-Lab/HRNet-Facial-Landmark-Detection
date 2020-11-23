@@ -140,7 +140,7 @@
 |10|1+2+3  | x4 | 75.77 | 87.81 | 78.13  | 79.08 | 111 |
 |10|1+2+3+4| x4 | 31.09 | 43.82 | 33.58  | 36.36 | 111 |
 
-#### Stage 4
+#### Search Space: Modified DenseNAS (Stage 4)
 | Stack Num | Initialization | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 |kaiming| x1 | 70.09 | 81.21 | 72.27  | 72.96 | 111 |
@@ -171,7 +171,15 @@
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 |7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 
-#### Search Space: HRNet + DARTS ops (Initialize by he_fout)
+#### Search Space: HRNet + darts cell based (Initialize by kmnormal_fanout)
+| Sum/Concat | Search Space | Search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|Sum    |HRNet   | 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
+|Concat |HRNet   | 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
+|Sum    |DenseNAS| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
+|Concat |DenseNAS| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
+
+#### Search Space: HRNet + DARTS ops (Initialize by kmnormal_fanout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | 1 | 100.88 | 93.51| 107.42 | 96.23 | 95.36 | 111 |
@@ -179,7 +187,7 @@
 |4 | 2 | 160.19 | 84.96| 97.96 | 87.50 | 88.26 | 111 |
 |7 | 2 | 140.24 | 94.74| 106.02 | 96.95 | 96.63 | 111 |
 
-#### Multi-Scale(带红线)
+#### Multi-Scale( Search Space: 带红线的HRNet)
 | Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | normal |1 | x1 | 4.04 | 6.78 | 4.58 | 5.38 | 111 |
