@@ -1,5 +1,6 @@
 # Performance
-## HRNet-SE
+## Attention Mechanism
+### HRNet-SE
 | Model | reduction | *common*| *challenge* | *full* | *test*|
 |:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |1| 2.95 | 5.11 | 3.38 | 3.93 | 
@@ -19,7 +20,7 @@
 |HRNetV2-W18 |15| 3.00 | 5.27 | 3.45 | 3.99 | 
 |HRNetV2-W18 |16| 2.92 | 5.29 | 3.39 | 3.94 | 
 
-## HRNet-SE + residual
+### HRNet-SE + residual
 | Model | reduction | *common*| *challenge* | *full* | *test*|
 |:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |1| 2.94 | 5.20 | 3.39 | 3.95 | 
@@ -39,7 +40,7 @@
 |HRNetV2-W18 |15| 2.94 | 5.31 | 3.40 | 3.95 | 
 |HRNetV2-W18 |16| 2.94 | 5.26 | 3.40 | 3.96 |
 
-## HRNet-SE + residual + seed
+### HRNet-SE + residual + seed
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |4| 2.93 | 5.16 | 3.37 | 3.97 | 111 |
@@ -53,14 +54,14 @@
 |HRNetV2-W18 |16| 2.94 | 5.20 | 3.39 | 3.96 | 222 |
 |HRNetV2-W18 |16| 2.94 | 5.26 | 3.39 | 3.94 | 333 |
 
-## HRNet-SE + residual + feature fusion
+### HRNet-SE + residual + feature fusion
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed | stage |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |4| 2.96 | 5.21 | 3.40 | 3.94 | 111 | 3+4 |
 |HRNetV2-W18 |4| 2.97 | 5.27 | 3.42 | 3.95 | 111 | 2+3+4 |
 |HRNetV2-W18 |4| 2.96 | 5.18 | 3.39 | 4.02 | 111 | 1+2+3+4 |
 
-## HRNet-NonLocal
+### HRNet-NonLocal
 | Model | f | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
@@ -69,7 +70,7 @@
 |HRNetV2-W18-NonLocal |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
 |HRNetV2-W18-NonLocal |concatenation| - | - | - | - | - |
 
-## HRNet-CBAM/BAM
+### HRNet-CBAM/BAM
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
@@ -80,7 +81,7 @@
 |HRNetV2-W18-CBAM |16| 2.92 | 5.20 | 3.37 | 3.93 | 111 |
 |HRNetV2-W18-BAM |16| 2.94 | 5.20 | 3.38 | 3.96 | 111 |
 
-## Integrating in resdiual unit
+### Integrating in resdiual unit
 | Model | reduction | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
@@ -107,6 +108,8 @@
 |HRNetV2-W18 |128/32| 3.35 | 5.53 | 3.78 | 4.23 | 111 |
 
 ## Densenas
+### Modified Search Space
+#### Search Space: Modified DenseNAS(Initialize by kaiming normal)
 | Stack Num | Stage | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 |1+2    | x1 | 111.06| 125.06 | 113.81 | 112.67 | 111 |
@@ -137,7 +140,7 @@
 |10|1+2+3  | x4 | 75.77 | 87.81 | 78.13  | 79.08 | 111 |
 |10|1+2+3+4| x4 | 31.09 | 43.82 | 33.58  | 36.36 | 111 |
 
-### Densenas(Stage 4)
+#### Stage 4
 | Stack Num | Initialization | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 |kaiming| x1 | 70.09 | 81.21 | 72.27  | 72.96 | 111 |
@@ -153,14 +156,14 @@
 |10|normal | x2 | 3.47 | 6.01 | 3.96 | 4.79 | 111 |
 |10|normal | x4 | 3.38 | 5.94 | 3.88 | 4.63 | 111 |
 
-Search Space: Original (Initialize by normal)
+#### Search Space: Modified DenseNAS(Initialize by normal)
 | Stack Num | update alpha(epoch) | transition| search NME | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |7 |0-20  | 1 | 20.87 | 3.67| 6.93 | 4.31 | 5.29 | 111 |
 |7 |0-20  | 2 | 26.09 | 3.50| 6.15 | 4.02 | 4.83 | 111 |
 |7 |10-30 | 2 | 24.28 | 3.48| 6.11 | 4.00 | 4.80 | 111 |
 
-Search Space: HRNet (Initialize by normal)
+#### Search Space: HRNet (Initialize by normal)
 | Stack Num | +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |7 |-          | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
@@ -168,7 +171,7 @@ Search Space: HRNet (Initialize by normal)
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 |7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 
-Search Space: HRNet + DARTS ops (Initialize by he_fout)
+#### Search Space: HRNet + DARTS ops (Initialize by he_fout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | 1 | 100.88 | 93.51| 107.42 | 96.23 | 95.36 | 111 |
@@ -176,7 +179,7 @@ Search Space: HRNet + DARTS ops (Initialize by he_fout)
 |4 | 2 | 160.19 | 84.96| 97.96 | 87.50 | 88.26 | 111 |
 |7 | 2 | 140.24 | 94.74| 106.02 | 96.95 | 96.63 | 111 |
 
-### Multi-Scale
+#### Multi-Scale(带红线)
 | Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | normal |1 | x1 | 4.04 | 6.78 | 4.58 | 5.38 | 111 |
