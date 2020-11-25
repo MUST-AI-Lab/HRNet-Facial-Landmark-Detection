@@ -75,6 +75,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |10|kaiming| x2 | 46.87 | 56.01 | 48.65  | 51.09 | 111 |
 |10|kaiming| x4 | 31.09 | 43.82 | 33.58  | 36.36 | 111 |
 |4 |normal | x1 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+|4(down16x) |normal | x1 | 4.60 | 7.51 | 5.17 | 6.10 | 111 |
 |7 |normal | x1 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
 |10|normal | x1 | 4.12 | 6.74 | 4.63 | 5.51 | 111 |
 |10|normal | x2 | 3.47 | 6.01 | 3.96 | 4.79 | 111 |
@@ -117,7 +118,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 ##### Multi-Scale(Search Space: 带红线的HRNet)
 | Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|4 | normal |1 | x1 | 4.04 | 6.78 | 4.58 | 5.38 | 111 |
+|4 | normal |1 | x1 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
 |7 | normal |1 | x1 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
 |4 | normal |2 | x1 | 3.30 | 6.18 | 3.87 | 4.71 | 111 |
 |7 | normal |2 | x1 | 3.27 | 5.91 | 3.78 | 4.64 | 111 |
