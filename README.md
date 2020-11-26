@@ -55,6 +55,15 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |HRNetV2-W32(reproduced) | 2.98 | 5.14 | 3.40 | 3.96 | [HRNetV2-W32](https://onedrive.live.com/?authkey=%21AEwfaSueYurmSRA&id=56B9F9C97F261712%2111776&cid=56B9F9C97F261712) | HR32-300W.pth|
 
 #### DenseNAS
+| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|original| DenseNAS          | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+|4       | DenseNAS          | 20.90 | 3.38 | 5.98 | 3.89 | 4.70 | 111 |
+|4       | modified DenseNAS | 21.68 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+|7       | modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
+|4       | HRNet             | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
+|7       | HRNet             | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
+
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
 | Stack Num | stem |search NME | *common*| *challenge* | *full* | *test*| seed |
@@ -95,6 +104,7 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L52)
 | Stack Num | +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 |-          | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
 |7 |-          | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
 |7 |smoothdarts| 12.67 | 4.69| 7.65 | 5.27 | 6.24 | 111 |
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
