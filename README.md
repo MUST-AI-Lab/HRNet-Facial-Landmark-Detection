@@ -56,6 +56,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 
 #### DenseNAS
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
+Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
 | Stack Num | stem |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |original | densenas | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
@@ -63,6 +64,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | 4       | hrnet    | 21.78 | 4.77| 7.97 | 5.40 | 6.38 | 111 |
 
 ##### Search Space: Modified DenseNAS (Stage 4)
+Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L27)
 | Stack Num | Initialization | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 |kaiming| x1 | 70.09 | 81.21 | 72.27  | 72.96 | 111 |
@@ -90,6 +92,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |7 |10-30 | 2 | 24.28 | 3.48| 6.11 | 4.00 | 4.80 | 111 |
 
 ##### Search Space: HRNet (Initialized by normal)
+Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L52)
 | Stack Num | +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |7 |-          | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
