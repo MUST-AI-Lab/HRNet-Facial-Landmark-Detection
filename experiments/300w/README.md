@@ -108,8 +108,26 @@
 |HRNetV2-W18 |128/32| 3.35 | 5.53 | 3.78 | 4.23 | 111 |
 
 ## Densenas
+| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|original| DenseNAS          | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+|4       | DenseNAS          | 20.90 | 3.38 | 5.98 | 3.89 | 4.70 | 111 |
+|4       | modified DenseNAS | 21.68 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+|7       | modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
+|4       | HRNet             | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
+|7       | HRNet             | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
+
+### Original DenseNAS search space (downsample 16x)(Initialized by normal)
+Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
+| Stack Num | stem |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|original | densenas | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
+| 4       | densenas | 20.90 | 3.38| 5.98 | 3.89 | 4.70 | 111 |
+| 4       | hrnet    | 21.78 | 4.77| 7.97 | 5.40 | 6.38 | 111 |
+
 ### Modified Search Space
 #### Search Space: Modified DenseNAS(Initialize by kaiming normal)
+Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L27)
 | Stack Num | Stage | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 |1+2    | x1 | 111.06| 125.06 | 113.81 | 112.67 | 111 |
@@ -152,6 +170,9 @@
 |10|kaiming| x1 | 62.47 | 74.81 | 64.88  | 65.93 | 111 |
 |10|kaiming| x2 | 46.87 | 56.01 | 48.65  | 51.09 | 111 |
 |10|kaiming| x4 | 31.09 | 43.82 | 33.58  | 36.36 | 111 |
+|4 |normal | x1 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+|4(down16x) |normal | x1 | 4.60 | 7.51 | 5.17 | 6.10 | 111 |
+|7 |normal | x1 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
 |10|normal | x1 | 4.12 | 6.74 | 4.63 | 5.51 | 111 |
 |10|normal | x2 | 3.47 | 6.01 | 3.96 | 4.79 | 111 |
 |10|normal | x4 | 3.38 | 5.94 | 3.88 | 4.63 | 111 |
@@ -159,13 +180,16 @@
 #### Search Space: Modified DenseNAS(Initialize by normal)
 | Stack Num | update alpha(epoch) | transition| search NME | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 |0-20  | 1 | 21.68 | 3.65| 6.82 | 4.27 | 5.24 | 111 |
 |7 |0-20  | 1 | 20.87 | 3.67| 6.93 | 4.31 | 5.29 | 111 |
 |7 |0-20  | 2 | 26.09 | 3.50| 6.15 | 4.02 | 4.83 | 111 |
 |7 |10-30 | 2 | 24.28 | 3.48| 6.11 | 4.00 | 4.80 | 111 |
 
 #### Search Space: HRNet (Initialize by normal)
+Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L52)
 | Stack Num | +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 |-          | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
 |7 |-          | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
 |7 |smoothdarts| 12.67 | 4.69| 7.65 | 5.27 | 6.24 | 111 |
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
@@ -174,10 +198,12 @@
 #### Search Space: HRNet + darts cell based (Initialize by kmnormal_fanout)
 | Sum/Concat | Search Space | Search NME | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|Sum    |HRNet   | 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
-|Concat |HRNet   | 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
-|Sum    |DenseNAS| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
-|Concat |DenseNAS| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
+|Sum   |HRNet   | 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
+|Concat|HRNet   | 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
+|Sum   |modified DenseNAS| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
+|Concat|modified DenseNAS| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
+|Sum   | DenseNAS | 110.66 | 39.91| 60.43 | 43.93 | 47.25 | 111 |
+|Concat| DenseNAS | 109.36 | 66.14| 79.80 | 68.82 | 70.18 | 111 |
 
 #### Search Space: HRNet + DARTS ops (Initialize by kmnormal_fanout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
@@ -191,6 +217,7 @@
 | Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | normal |1 | x1 | 4.04 | 6.78 | 4.58 | 5.38 | 111 |
+|7 | normal |1 | x1 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
 |4 | normal |2 | x1 | 3.30 | 6.18 | 3.87 | 4.71 | 111 |
 |7 | normal |2 | x1 | 3.27 | 5.91 | 3.78 | 4.64 | 111 |
 |10| normal |2 | x1 | 3.23 | 5.88 | 3.75 | 4.57 | 111 |
