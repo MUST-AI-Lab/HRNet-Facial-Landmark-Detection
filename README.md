@@ -69,28 +69,54 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 | Stack Num | stem |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |original | densenas | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
+|original | hrnet    | 23.33 | 4.57| 7.47 | 5.14 | 6.06 | 111 |
 | 4       | densenas | 20.90 | 3.38| 5.98 | 3.89 | 4.70 | 111 |
 | 4       | hrnet    | 21.78 | 4.77| 7.97 | 5.40 | 6.38 | 111 |
 
+| channel reduction |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 2 | 21.79 | 3.50| 6.12 | 4.01 | 4.88 | 111 |
+| 4 | 20.71 | 3.65| 6.47|  4.20| 5.13| 111 |
+| 8 | 21.54 | 3.93| 7.29 | 4.59 | 5.68 | 111 |
+
+| Stack Num |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| +2 |22.32 | 3.43| 6.03 | 3.94 | 4.75 | 111 |
+| +4 |21.78 | 3.40 | 5.98 | 3.90 | 4.69 | 111 |
+| +6 |22.37 | 3.38 | 5.98| | 3.89 | 4.69 | 111 |
+| +8 | 21.54 | 3.40| 5.98 | 3.91 | 4.73 | 111 |
+
+| blcok Num |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| -2 |21.50 | 3.44 | 6.05 | 3.95 | 4.73 | 111 |
+| -4 |21.78 | 3.43 | 6.01 | 3.94 | 4.76| 111 |
+| -6 |22.37 | 3.56 | 6.48| 4.14 | 5.10 | 111 |
+| -8 | 21.54 | 3.38| 5.98 | 4.18 | 5.13 | 111 |
+
+| transition |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 1 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+| 2 | 21.62 | 3.35| 5.85|  3.84| 4.60| 111 |
+
 ##### Search Space: Modified DenseNAS (Stage 4)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L27)
-| Stack Num | Initialization | channel expansion | *common*| *challenge* | *full* | *test*| seed |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|4 |kaiming| x1 | 70.09 | 81.21 | 72.27  | 72.96 | 111 |
-|4 |kaiming| x2 | 57.70 | 66.88 | 59.50  | 62.89 | 111 |
-|4 |kaiming| x4 | 46.99 | 59.10 | 49.36  | 50.64 | 111 |
-|7 |kaiming| x1 | 63.33 | 73.49 | 65.32  | 65.79 | 111 |
-|7 |kaiming| x2 | 51.31 | 62.37 | 53.48  | 54.20 | 111 |
-|7 |kaiming| x4 | 31.98 | 47.18 | 34.96  | 37.26 | 111 |
-|10|kaiming| x1 | 62.47 | 74.81 | 64.88  | 65.93 | 111 |
-|10|kaiming| x2 | 46.87 | 56.01 | 48.65  | 51.09 | 111 |
-|10|kaiming| x4 | 31.09 | 43.82 | 33.58  | 36.36 | 111 |
-|4 |normal | x1 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
-|4(down16x) |normal | x1 | 4.60 | 7.51 | 5.17 | 6.10 | 111 |
-|7 |normal | x1 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
-|10|normal | x1 | 4.12 | 6.74 | 4.63 | 5.51 | 111 |
-|10|normal | x2 | 3.47 | 6.01 | 3.96 | 4.79 | 111 |
-|10|normal | x4 | 3.38 | 5.94 | 3.88 | 4.63 | 111 |
+| Stack Num | Initialization |downsample| channel expansion | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 |kaiming|8x| x1 | 70.09 | 81.21 | 72.27  | 72.96 | 111 |
+|4 |kaiming|8x| x2 | 57.70 | 66.88 | 59.50  | 62.89 | 111 |
+|4 |kaiming|8x| x4 | 46.99 | 59.10 | 49.36  | 50.64 | 111 |
+|7 |kaiming|8x| x1 | 63.33 | 73.49 | 65.32  | 65.79 | 111 |
+|7 |kaiming|8x| x2 | 51.31 | 62.37 | 53.48  | 54.20 | 111 |
+|7 |kaiming|8x| x4 | 31.98 | 47.18 | 34.96  | 37.26 | 111 |
+|10|kaiming|8x| x1 | 62.47 | 74.81 | 64.88  | 65.93 | 111 |
+|10|kaiming|8x| x2 | 46.87 | 56.01 | 48.65  | 51.09 | 111 |
+|10|kaiming|8x| x4 | 31.09 | 43.82 | 33.58  | 36.36 | 111 |
+|4 |normal |8x| x1 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+|4 |normal |16x| x1 | 4.60 | 7.51 | 5.17 | 6.10 | 111 |
+|7 |normal |8x| x1 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
+|10|normal |8x| x1 | 4.12 | 6.74 | 4.63 | 5.51 | 111 |
+|10|normal |8x| x2 | 3.47 | 6.01 | 3.96 | 4.79 | 111 |
+|10|normal |8x| x4 | 3.38 | 5.94 | 3.88 | 4.63 | 111 |
 
 ##### Search Space: Modified DenseNAS(Initialized by normal)
 | Stack Num | update alpha(epoch) | transition| search NME | *common*| *challenge* | *full* | *test*| seed | 
@@ -158,59 +184,6 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |HRNetV2-W18 |normal| 2.99 | 5.21 | 3.43 | 4.08 | 111 |
 |HRNetV2-W18 |Xavier| 28.57 | 48.20 | 32.42 | 36.85 | 111 |
 |HRNetV2-W18 |kaiming| 82.42 | 94.87 | 84.86 | 84.79 | 111 |
-
-#### Integrating in resdiual unit
-| Model | reduction | *common*| *challenge* | *full* | *test*| seed |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18-SE |16| 2.97 | 5.23 | 3.41 | 3.98 | 111 |
-|HRNetV2-W18-CBAM |16| 2.96 | 5.28 | 3.42 | 4.06 | 111 |
-|HRNetV2-W32-SE |16| 2.98 | 5.21 | 3.41 | 4.01 | 111 |
-|HRNetV2-W32-CBAM |16| 2.98 | 5.24 | 3.42 | 4.02 | 111 |
-
-#### HRNet-SE + residual
-| Model | reduction | *common*| *challenge* | *full* | *test*| seed |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18-SE |4| 2.93 | 5.16 | 3.37 | 3.97 | 111 |
-|HRNetV2-W18-SE |4| 2.93 | 5.15 | 3.36 | 3.94 | 111 |
-|HRNetV2-W18-SE |4| 2.95 | 5.16 | 3.39 | 3.97 | 222 |
-|HRNetV2-W18-SE |4| 2.94 | 5.26 | 3.40 | 3.93 | 333 |
-|HRNetV2-W18-SE |8| 2.93 | 5.29 | 3.39 | 3.94 | 111 |
-|HRNetV2-W18-SE |8| 2.96 | 5.23 | 3.40 | 4.00 | 222 |
-|HRNetV2-W18-SE |8| 2.96 | 5.26 | 3.41 | 4.00 | 333 |
-|HRNetV2-W18-SE |16| 2.95 | 5.30 | 3.39 | 3.95 | 111 |
-|HRNetV2-W18-SE |16| 2.94 | 5.20 | 3.39 | 3.96 | 222 |
-|HRNetV2-W18-SE |16| 2.94 | 5.26 | 3.39 | 3.94 | 333 |
-
-#### HRNet-SE + residual + feature fusion
-| Model | reduction | *common*| *challenge* | *full* | *test*| seed | stage |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - | 4 |
-|HRNetV2-W18-SE |4| 2.93 | 5.15 | 3.36 | 3.94 | 111 | 4 |
-|HRNetV2-W18-SE |4| 2.96 | 5.21 | 3.40 | 3.94 | 111 | 3+4 |
-|HRNetV2-W18-SE |4| 2.97 | 5.27 | 3.42 | 3.95 | 111 | 2+3+4 |
-|HRNetV2-W18-SE |4| 2.96 | 5.18 | 3.39 | 4.02 | 111 | 1+2+3+4 |
-
-#### HRNet-NonLocal
-| Model | f | *common*| *challenge* | *full* | *test*| seed |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18-NonLocal |Gaussian, embed| 2.95 | 5.18 | 3.38 | 3.96 | 111 |
-|HRNetV2-W18-NonLocal |Gaussian| 2.92 | 5.19 | 3.36 | 4.00 | 111 |
-|HRNetV2-W18-NonLocal |dot-product| 2.95 | 5.25 | 3.40 | 3.96 | 111 |
-|HRNetV2-W18-NonLocal |concatenation| - | - | - | - | - |
-
-#### HRNet-CBAM/BAM
-| Model | reduction | *common*| *challenge* | *full* | *test*| seed |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|HRNetV2-W18 |-| 2.91 | 5.11 | 3.34 | 3.85 | - |
-|HRNetV2-W18-CBAM |4| 2.98 | 5.25 | 3.42 | 3.93 | 111 |
-|HRNetV2-W18-BAM |4| 2.92 | 5.18 | 3.36 | 3.98 | 111 |
-|HRNetV2-W18-CBAM |8| 2.96 | 5.21 | 3.40 | 3.95 | 111 |
-|HRNetV2-W18-BAM |8| 2.97 | 5.20 | 3.40 | 3.97 | 111 |
-|HRNetV2-W18-CBAM |16| 2.92 | 5.20 | 3.37 | 3.93 | 111 |
-|HRNetV2-W18-BAM |16| 2.94 | 5.20 | 3.38 | 3.96 | 111 |
 
 
 ![](images/face.png)
