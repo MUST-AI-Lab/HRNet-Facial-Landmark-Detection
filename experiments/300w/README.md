@@ -122,8 +122,34 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 | Stack Num | stem |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |original | densenas | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
+|original | hrnet    | 23.33 | 4.57| 7.47 | 5.14 | 6.06 | 111 |
 | 4       | densenas | 20.90 | 3.38| 5.98 | 3.89 | 4.70 | 111 |
 | 4       | hrnet    | 21.78 | 4.77| 7.97 | 5.40 | 6.38 | 111 |
+
+| channel reduction |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 2 | 21.79 | 3.50| 6.12 | 4.01 | 4.88 | 111 |
+| 4 | 20.71 | 3.65| 6.47|  4.20| 5.13| 111 |
+| 8 | 21.54 | 3.93| 7.29 | 4.59 | 5.68 | 111 |
+
+| Stack Num |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| +2 |22.32 | 3.43| 6.03 | 3.94 | 4.75 | 111 |
+| +4 |21.78 | 3.40 | 5.98 | 3.90 | 4.69 | 111 |
+| +6 |22.37 | 3.38 | 5.98| | 3.89 | 4.69 | 111 |
+| +8 | 21.54 | 3.40| 5.98 | 3.91 | 4.73 | 111 |
+
+| blcok Num |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| -2 |21.50 | 3.44 | 6.05 | 3.95 | 4.73 | 111 |
+| -4 |21.78 | 3.43 | 6.01 | 3.94 | 4.76| 111 |
+| -6 |22.37 | 3.56 | 6.48| 4.14 | 5.10 | 111 |
+| -8 | 21.54 | 3.38| 5.98 | 4.18 | 5.13 | 111 |
+
+| transition |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 1 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+| 2 | 21.62 | 3.35| 5.85|  3.84| 4.60| 111 |
 
 ### Modified Search Space
 #### Search Space: Modified DenseNAS(Initialize by kaiming normal)
