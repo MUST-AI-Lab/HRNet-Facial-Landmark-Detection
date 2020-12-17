@@ -161,9 +161,10 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 |7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 
-##### Search Space: HRNet + darts cell based (Initialized by )
+##### Search Space: Darts cell based
 | Sum/Concat | Search Space |Initialization | Search NME | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|-     | DenseNAS | normal| 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 |Sum   |HRNet   |kaiming| 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
 |Concat|HRNet   |kaiming| 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
 |Sum   |modified DenseNAS|kaiming| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
