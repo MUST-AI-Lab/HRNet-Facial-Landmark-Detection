@@ -63,6 +63,8 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |7       | modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
 |4       | HRNet             | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
 |7       | HRNet             | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
+|4       | modified HRNet    | 21.30 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
+|7       | modified HRNet    | 21.13 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
 
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
@@ -75,12 +77,14 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 
 | channel reduction |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 0 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 | 2 | 21.79 | 3.50| 6.12 | 4.01 | 4.88 | 111 |
 | 4 | 20.71 | 3.65| 6.47|  4.20| 5.13| 111 |
 | 8 | 21.54 | 3.93| 7.29 | 4.59 | 5.68 | 111 |
 
 | Stack Num |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| +0 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 | +2 |22.32 | 3.43| 6.03 | 3.94 | 4.75 | 111 |
 | +4 |21.78 | 3.40 | 5.98 | 3.90 | 4.69 | 111 |
 | +6 |22.37 | 3.38 | 5.98| 3.89 | 4.69 | 111 |
@@ -88,6 +92,7 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 
 | blcok Num |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| -0 |21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 | -2 |21.50 | 3.44 | 6.05 | 3.95 | 4.73 | 111 |
 | -4 |21.78 | 3.43 | 6.01 | 3.94 | 4.76| 111 |
 | -6 |22.37 | 3.56 | 6.48| 4.14 | 5.10 | 111 |
@@ -97,6 +102,26 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 1 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 | 2 | 21.62 | 3.35| 5.85|  3.84| 4.60| 111 |
+
+| +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|-               | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
+|smoothdarts     | 22.29 | 3.40| 5.92 | 3.90 | 4.70 | 111 |
+|noisydarts(step)| 34.69 | 3.40| 6.04 | 3.92 | 4.70 | 111 |
+|noisydarts(epoch)| 34.69 | 3.40| 6.04 | 3.92 | 4.70 | 111 |
+
+| +ops |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|     -       | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
+| sep conv3x3 | 24.74 | 3.47 | 6.15 | 4.00 | 4.85 | 111 |
+| dil conv3x3 | 24.10 | 3.43 | 6.07 | 3.95 | 4.73 | 111 |
+| sep conv5x5 | 25.33 | 3.43 | 6.15 | 3.96 | 4.81 | 111 |
+| dil conv5x5 | 27.85 | 3.47 | 6.09 | 3.98 | 4.83 | 111 |
+
+| loss factor |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 0.15   | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+| 0      | 21.59 | 3.48 | 6.10 | 3.99 | 4.79 | 111 |
 
 ##### Search Space: Modified DenseNAS (Stage 4)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L27)
