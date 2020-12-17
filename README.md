@@ -161,15 +161,17 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 |7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 
-##### Search Space: HRNet + darts cell based (Initialized by kmnormal_fanout)
-| Sum/Concat | Search Space | Search NME | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|Sum   |HRNet   | 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
-|Concat|HRNet   | 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
-|Sum   |modified DenseNAS| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
-|Concat|modified DenseNAS| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
-|Sum   | DenseNAS | 110.66 | 39.91| 60.43 | 43.93 | 47.25 | 111 |
-|Concat| DenseNAS | 109.36 | 66.14| 79.80 | 68.82 | 70.18 | 111 |
+##### Search Space: HRNet + darts cell based (Initialized by )
+| Sum/Concat | Search Space |Initialization | Search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|Sum   |HRNet   |kaiming| 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
+|Concat|HRNet   |kaiming| 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
+|Sum   |modified DenseNAS|kaiming| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
+|Concat|modified DenseNAS|kaiming| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
+|Sum   | DenseNAS |kaiming| 110.66 | 39.91| 60.43 | 43.93 | 47.25 | 111 |
+|Concat| DenseNAS |kaiming| 109.36 | 66.14| 79.80 | 68.82 | 70.18 | 111 |
+|Sum   | DenseNAS (head:basic block) |normal| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 | 
+|Concat| DenseNAS (head:basic block) |normal| 21.69  | 3.51| 6.23 | 4.04 | 4.93 | 111 |
 
 ##### Search Space: HRNet + DARTS ops (Initialized by kmnormal_fanout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
