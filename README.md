@@ -68,13 +68,36 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
-| Stack Num | stem |search NME | *common*| *challenge* | *full* | *test*| seed |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|original | densenas | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
-|original | hrnet    | 23.33 | 4.57| 7.47 | 5.14 | 6.06 | 111 |
-| 4       | densenas | 20.90 | 3.38| 5.98 | 3.89 | 4.70 | 111 |
-| 4       | hrnet    | 21.78 | 4.77| 7.97 | 5.40 | 6.38 | 111 |
+| Stack Num | stem | pretrained |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|original | densenas |False| 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
+|original | densenas |True | 21.78 | 3.40| 5.92 | 3.89 | 4.64 | 111 |
+|original | hrnet    |False| 23.33 | 4.57| 7.47 | 5.14 | 6.06 | 111 |
+| 4       | densenas |False| 20.90 | 3.38| 5.98 | 3.89 | 4.70 | 111 |
+| 4       | hrnet    |False| 21.78 | 4.77| 7.97 | 5.40 | 6.38 | 111 |
 
+on batch size and seed
+|batch size|search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|16| 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+|16| 22.09| 3.42| 6.03 |  3.93 | 4.72 | 111 |
+|16| 21.74 | 3.38| 5.89 | 3.88 | 4.64 | 222 |
+|16| 21.91 | 3.40| 5.90 | 3.89 | 4.67 | 333 |
+|32| 22.58| 3.43| 6.02 |  3.93 | 4.74 | 111 |
+
+on the epoch updating alpha 
+|update a(epoch)| loss factor |search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 0-20 | 0.15 |21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+|10-30 | 0.15 |21.55 | 3.39 | 5.96 | 3.90 | 4.69 | 111 |
+|20-40 | 0.15 |21.73 | 3.39 | 6.00 | 3.90 | 4.69 | 111 |
+|0-20  | 0 | 21.59 | 3.48 | 6.10 | 3.99 | 4.79 | 111 |
+|0-30  | 0 | 21.53 | 3.37 | 5.86 | 3.86 | 4.64 | 111 |
+|0-40  | 0 | 21.52 | 3.39 | 5.84 | 3.87 | 4.65 | 111 |
+|10-30 | 0 | 21.58 | 3.47 | 6.08 | 3.99 | 4.83 | 111 |
+|20-40 | 0 | 21.32 | 3.43 | 5.90 | 3.91 | 4.67 | 111 |
+
+on channel size
 | channel reduction |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 0 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
@@ -82,6 +105,7 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 | 4 | 20.71 | 3.65| 6.47|  4.20| 5.13| 111 |
 | 8 | 21.54 | 3.93| 7.29 | 4.59 | 5.68 | 111 |
 
+on the number of basic layer
 | Stack Num |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | +0 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
@@ -90,7 +114,8 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 | +6 |22.37 | 3.38 | 5.98| 3.89 | 4.69 | 111 |
 | +8 | 21.54 | 3.40| 5.98 | 3.91 | 4.73 | 111 |
 
-| blcok Num |search NME | *common*| *challenge* | *full* | *test*| seed |
+on the number of routing block
+| block Num |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | -0 |21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 | -2 |21.50 | 3.44 | 6.05 | 3.95 | 4.73 | 111 |
@@ -98,11 +123,13 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 | -6 |22.37 | 3.56 | 6.48| 4.14 | 5.10 | 111 |
 | -8 | 21.54 | 3.38| 5.98 | 4.18 | 5.13 | 111 |
 
+on multi-branch
 | transition |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 1 | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
 | 2 | 21.62 | 3.35| 5.85|  3.84| 4.60| 111 |
 
+adding noise
 | +noise | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |-               | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
@@ -110,6 +137,7 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |noisydarts(step)| 34.69 | 3.40| 6.04 | 3.92 | 4.70 | 111 |
 |noisydarts(epoch)| 34.69 | 3.40| 6.04 | 3.92 | 4.70 | 111 |
 
+adding operations from darts search space
 | +ops |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |     -       | 21.78 | 3.41| 6.04 | 3.92 | 4.71 | 111 |
@@ -118,6 +146,7 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 | sep conv5x5 | 25.33 | 3.43 | 6.15 | 3.96 | 4.81 | 111 |
 | dil conv5x5 | 27.85 | 3.47 | 6.09 | 3.98 | 4.83 | 111 |
 
+on the factor of loss function to control model size
 | loss factor |search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 0.15   | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
@@ -162,17 +191,32 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 
 ##### Search Space: Darts cell based
-| Sum/Concat | Search Space |Initialization | Search NME | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|-     | DenseNAS | normal| 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
-|Sum   |HRNet   |kaiming| 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
-|Concat|HRNet   |kaiming| 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
-|Sum   |modified DenseNAS|kaiming| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
-|Concat|modified DenseNAS|kaiming| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
-|Sum   | DenseNAS |kaiming| 110.66 | 39.91| 60.43 | 43.93 | 47.25 | 111 |
-|Concat| DenseNAS |kaiming| 109.36 | 66.14| 79.80 | 68.82 | 70.18 | 111 |
-|Sum   | DenseNAS (head:basic block) |normal| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 | 
-|Concat| DenseNAS (head:basic block) |normal| 21.69  | 3.51| 6.23 | 4.04 | 4.93 | 111 |
+| Sum/Concat | Search Space |Initialization |pretrained| Search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|-     | DenseNAS | normal|False| 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+|Sum   |HRNet   |kaiming|False| 130.38 |111.13 |126.08 | 114.06 | 114.00| 111 |
+|Concat|HRNet   |kaiming|False| 108.76 | 51.07 | 68.33 | 54.45  | 55.87 | 111 |
+|Sum   |modified DenseNAS|kaiming|False| 107.53 | 61.52 | 74.65 | 64.09  | 67.44 | 111 |
+|Concat|modified DenseNAS|kaiming|False| 111.99 | 56.74 | 75.94 | 60.50  | 61.90 | 111 |
+|Sum   | DenseNAS |kaiming|False| 110.66 | 39.91| 60.43 | 43.93 | 47.25 | 111 |
+|Concat| DenseNAS |kaiming|False| 109.36 | 66.14| 79.80 | 68.82 | 70.18 | 111 |
+|Sum   | DenseNAS (head:basic block) |normal|False| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 |
+|Sum   | DenseNAS (head:basic block) |normal|True| 21.54 | 3.38| 5.98 | 3.89 | 4.67 | 111 |
+|Concat| DenseNAS (head:basic block) |normal|False| 21.69  | 3.51| 6.23 | 4.04 | 4.93 | 111 |
+
+on the DenseNAS with head:basic block
+|update a(epoch)| loss factor | search NME | *common*| *challenge* | *full* | *test*| seed |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 0-20 | 0.15 | 21.54 | 3.40 | 5.93 | 3.89 | 4.71 | 111 |
+| 0-30 | 0.15 | 21.51 | 3.41 | 5.97 | 3.91 | 4.67 | 111 | 
+| 0-40 | 0.15 | 21.20 |  |  |  |  |  |
+|10-30 | 0.15 | 21.49 | 3.38 | 5.90 | 3.87 | 4.66 | 111 |
+|20-40 | 0.15 | 21.33 | 3.41 | 5.97 | 3.91 | 4.73 | 111 |
+|0-20  | 0 | 21.53 | 3.38 | 5.93 | 3.88 | 4.64 | 111 | 
+|0-30  | 0 | 21.55 | 3.87 | 6.89 | 4.46 | 5.37 | 111 | 
+|0-40  | 0 | 21.13 | 3.40 | 5.98 | 3.91 | 4.61 | 111 | 
+|10-30 | 0 | 21.48 | 3.64 | 6.35 | 4.17 | 4.95 | 111 | 
+|20-40 | 0 | 21.16 |  |  |  |  |  |
 
 ##### Search Space: HRNet + DARTS ops (Initialized by kmnormal_fanout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
