@@ -55,17 +55,25 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |HRNetV2-W32(reproduced) | 2.98 | 5.14 | 3.40 | 3.96 | [HRNetV2-W32](https://onedrive.live.com/?authkey=%21AEwfaSueYurmSRA&id=56B9F9C97F261712%2111776&cid=56B9F9C97F261712) | HR32-300W.pth|
 
 #### DenseNAS
-| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|original| DenseNAS          | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
-|4       | DenseNAS          | 20.90 | 3.38 | 5.98 | 3.89 | 4.70 | 111 |
-|4       | modified DenseNAS | 21.68 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
-|7       | modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
-|4       | HRNet             | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
-|7       | HRNet             | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
-|4       | modified HRNet    | 21.30 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
-|7       | modified HRNet    | 21.13 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
-|- | darts cell based DenseNAS| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 |
+|loss factor| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 0.15 |original| DenseNAS          | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+| 0.15 |4       | DenseNAS          | 20.90 | 3.38 | 5.98 | 3.89 | 4.70 | 111 |
+| 0.15 |7       | DenseNAS          | 22.24 | 3.42 | 6.02 | 3.93 | 4.71 | 111 |
+| 0.15 |4       | modified DenseNAS | 21.68 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+| 0.15 |7       | modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
+| 0.15 |4       | HRNet             | 20.12 | 5.72 | 9.41 | 6.44 | 7.59 | 111 |
+| 0.15 |7       | HRNet             | 21.50 | 4.30 | 7.62 | 4.95 | 6.00 | 111 |
+| 0.15 |4       | modified HRNet    | 21.30 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
+| 0.15 |7       | modified HRNet    | 21.13 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
+| 0.15 |- | darts cell based DenseNAS| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 |
+| 0 |original | DenseNAS          | 21.59 | 3.48 | 6.10 | 3.99 | 4.79 | 111 |
+| 0 |4        | DenseNAS          | 20.74 | 3.38| 5.88 | 3.87 | 4.62 | 111 | 
+| 0 |7        | DenseNAS          | 21.57 | 3.87 | 7.25 | 4.53 | 5.83 | 111 |
+| 0 |4        |(stem:hrnet)modified DenseNAS.   | 20.89 | 3.97 | 6.62 | 4.49 | 5.26 | 111 |
+| 0 |7        |(stem:densenas)modified DenseNAS | 20.48 | 3.37 | 5.82 | 3.85 | 4.59 | 111 |
+| 0 |4        | HRNet             | 5.34 | 4.34 | 7.93 | 5.05 | 6.06 | 111 |
+| 0 |7        | HRNet             | 8.03 | 4.21 | 7.05 | 4.95 | 5.47 | 111 |
 
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
@@ -210,14 +218,14 @@ on the DenseNAS with head:basic block
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 0-20 | 0.15 | 21.54 | 3.40 | 5.93 | 3.89 | 4.71 | 111 |
 | 0-30 | 0.15 | 21.51 | 3.41 | 5.97 | 3.91 | 4.67 | 111 | 
-| 0-40 | 0.15 | 21.20 |  |  |  |  |  |
+| 0-40 | 0.15 | 21.20 | 3.40 | 5.98 | 3.94 | 4.61 | 111 |
 |10-30 | 0.15 | 21.49 | 3.38 | 5.90 | 3.87 | 4.66 | 111 |
 |20-40 | 0.15 | 21.33 | 3.41 | 5.97 | 3.91 | 4.73 | 111 |
 |0-20  | 0 | 21.53 | 3.38 | 5.93 | 3.88 | 4.64 | 111 | 
 |0-30  | 0 | 21.55 | 3.87 | 6.89 | 4.46 | 5.37 | 111 | 
 |0-40  | 0 | 21.13 | 3.40 | 5.98 | 3.91 | 4.61 | 111 | 
 |10-30 | 0 | 21.48 | 3.64 | 6.35 | 4.17 | 4.95 | 111 | 
-|20-40 | 0 | 21.16 |  |  |  |  |  |
+|20-40 | 0 | 21.16 | 3.73 | 6.66 | 4.30 | 6.37 | 111 |
 
 ##### Search Space: HRNet + DARTS ops (Initialized by kmnormal_fanout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
@@ -228,7 +236,7 @@ on the DenseNAS with head:basic block
 |7 | 2 | 140.24 | 94.74| 106.02 | 96.95 | 96.63 | 111 |
 
 ##### Multi-Scale(Search Space: 带红线的HRNet)
-| Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed | 
+| Stack Num |Initialization| Transition | channel expansion | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |4 | normal |1 | x1 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
 |7 | normal |1 | x1 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
