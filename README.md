@@ -74,7 +74,7 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | 0 |7        |hrnet|modified DenseNAS   | 20.89 | 4.35 | 6.93 | 4.86 | 5.62 | 111 |
 | 0 |7        |densenas|modified DenseNAS | 20.48 | 3.37 | 5.82 | 3.85 | 4.59 | 111 |
 | 0 |4        |hrnet| HRNet             | 5.34 | 4.34 | 7.93 | 5.05 | 6.06 | 111 |
-| 0 |7        |hrnet| HRNet             | 8.03 | 4.21 | 7.05 | 4.95 | 5.47 | 111 |
+| 0 |7        |hrnet| HRNet             | 8.03 | 4.21 | 7.05 | 4.76 | 5.47 | 111 |
 
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L1)
