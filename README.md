@@ -70,8 +70,8 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 | 0 |original |densenas| DenseNAS          | 21.59 | 3.48 | 6.10 | 3.99 | 4.79 | 111 |
 | 0 |4        |densenas| DenseNAS          | 20.74 | 3.38| 5.88 | 3.87 | 4.62 | 111 | 
 | 0 |7        |densenas| DenseNAS          | 21.57 | 3.87 | 7.25 | 4.53 | 5.83 | 111 |
-| 0 |4        |hrnet|modified DenseNAS.   | 20.89 | 3.97 | 6.62 | 4.49 | 5.26 | 111 |
-| 0 |4        |hrnet|modified DenseNAS.   | 20.89 | 4.35 | 6.93 | 4.86 | 5.62 | 111 |
+| 0 |4        |hrnet|modified DenseNAS   | 20.89 | 3.97 | 6.62 | 4.49 | 5.26 | 111 |
+| 0 |7        |hrnet|modified DenseNAS   | 20.89 | 4.35 | 6.93 | 4.86 | 5.62 | 111 |
 | 0 |7        |densenas|modified DenseNAS | 20.48 | 3.37 | 5.82 | 3.85 | 4.59 | 111 |
 | 0 |4        |hrnet| HRNet             | 5.34 | 4.34 | 7.93 | 5.05 | 6.06 | 111 |
 | 0 |7        |hrnet| HRNet             | 8.03 | 4.21 | 7.05 | 4.95 | 5.47 | 111 |
