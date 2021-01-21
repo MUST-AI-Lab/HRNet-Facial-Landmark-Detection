@@ -227,20 +227,18 @@ loss factor:0   update alpha: 0-40
 |7 | hrnet   | 20.48 | 4.35 | 6.93 | 4.86 | 5.62 | 111 | 2.62 | 2.9 |
 |10 | hrnet  | 20.80 | 3.77 | 6.38 | 4.28 | 5.11 | 111 | 4.11 | 3.5 |
 
-Expansion 2 + Transistion 1
-| Stack Num | stem | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|4 | densenas  | 5.95 | **3.19** | 5.78 | 3.69 | **4.44** | 111 | 5.16 | 14.3 |
-|4 | hrnet     | 20.12 | 3.52 | 6.17 | 4.04 | 4.88 | 111 | 7.45 | 5.7 |
-|7 | hrnet     | 21.41 | 3.45 | 6.01 | 3.95 | 4.73 | 111 | 11.89 | 6.1 |
-
-Transition 2
-| Stack Num | stem |channel expansion| search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|4 | densenas  |1| 5.84 | **3.19** | **5.68** | **3.68** | 4.47 | 111 | 3.86 | 4.4 |
-|7 | densenas  |1| 7.29 | 3.28 | 5.80 | 3.77 | 4.58 | 111 | 6.32 | 6.0 |
-|10 | densenas |1| 7.03 | 3.22 | 5.71 | 3.71 | **4.44** | 111 | 6.36 | 6.7 |
-|4 | densenas  |2| 5.84 | 3.20 | 5.76 | 3.70 | **4.44** | 111 | 12.41 | 12.1 |
+on Transistion and Channel Expansion
+| Stack Num | stem |Transistion|channel expansion| search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | densenas  |1|1| 20.74| 3.38 | 5.88 | 3.87 | 4.62 | 111 | 22.04 | 7.4 |
+|4 | densenas  |1|2| 5.95 | **3.19** | 5.78 | 3.69 | **4.44** | 111 | 5.16 | 14.3 |
+|4 | densenas  |2|1| 5.84 | **3.19** | **5.68** | **3.68** | 4.47 | 111 | 3.86 | 4.4 |
+|7 | densenas  |2|1| 7.29 | 3.28 | 5.80 | 3.77 | 4.58 | 111 | 6.32 | 6.0 |
+|10| densenas  |2|1| 7.03 | 3.22 | 5.71 | 3.71 | **4.44** | 111 | 6.36 | 6.7 |
+|4 | densenas  |2|2| 5.84 | 3.20 | 5.76 | 3.70 | **4.44** | 111 | 12.41 | 12.1 |
+|4 | hrnet     |1|1| 5.41 | 3.49 | 5.99 | 3.98 | 4.70 | 111 | 2.19 | 1.9 | 
+|4 | hrnet     |1|2| 20.12 | 3.52 | 6.17 | 4.04 | 4.88 | 111 | 7.45 | 5.7 |
+|7 | hrnet     |1|2| 21.41 | 3.45 | 6.01 | 3.95 | 4.73 | 111 | 11.89 | 6.1 |
 
 ##### Search Space: HRNet (Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L52)
