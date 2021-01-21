@@ -55,39 +55,49 @@ The model is trained on AFLW *train* and evaluated on AFLW *full* and *frontal*.
 |HRNetV2-W32(reproduced) | 2.98 | 5.14 | 3.40 | 3.96 | [HRNetV2-W32](https://onedrive.live.com/?authkey=%21AEwfaSueYurmSRA&id=56B9F9C97F261712%2111776&cid=56B9F9C97F261712) | HR32-300W.pth|
 
 #### DenseNAS
-loss factor = 0.15
-| Stack Num |stem| search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|original|densenas| DenseNAS          | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
-|4       |densenas| DenseNAS          | 20.90 | 3.38 | 5.98 | 3.89 | 4.70 | 111 |
-|7       |densenas| DenseNAS          | 22.24 | 3.42 | 6.02 | 3.93 | 4.71 | 111 |
-|4       |hrnet| modified DenseNAS | 21.68 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
-|7       |hrnet| modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
-|4       |hrnet| HRNet             | 20.12 | 5.64 | 9.27 | 6.35 | 7.45 | 111 |
-|7       |hrnet| HRNet             | 21.50 | 5.65 | 9.37 | 6.38 | 7.55 | 111 |
-|4       |hrnet| modified HRNet    | 21.30 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
-|7       |hrnet| modified HRNet    | 21.13 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
-|- |densenas| darts cell based DenseNAS| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 |
+loss factor: 0.15 + stem: densenas
+| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|original| DenseNAS          | 21.78 | 3.41 | 6.04 | 3.92 | 4.71 | 111 |
+|4       | DenseNAS          | 20.90 | 3.38 | 5.98 | 3.89 | 4.70 | 111 |
+|7       | DenseNAS          | 22.24 | 3.42 | 6.02 | 3.93 | 4.71 | 111 |
+|4       | modified DenseNAS | 8.79 | 4.40 | 10.51 | 5.60 | 7.49 | 111 |
+|7       | modified DenseNAS | 20.96 | 4.39 | 9.99 | 5.49 | 7.53 | 111 |
+|4       | HRNet             | 7.95  | 5.06 | 8.35 | 5.71 | 6.78 | 111 |
+|7       | HRNet             | 10.91 | 5.01 | 8.29 | 5.65 | 6.70 | 111 |
+|- | darts cell based DenseNAS| 21.54 | 3.40| 5.93 | 3.89 | 4.71 | 111 |
+
+loss factor: 0.15 + stem: hrnet
+| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4       | modified DenseNAS | 21.68 | 3.65 | 6.82 | 4.27 | 5.24 | 111 |
+|7       | modified DenseNAS | 20.87 | 3.67 | 6.93 | 4.31 | 5.29 | 111 |
+|4       | HRNet             | 20.12 | 5.64 | 9.27 | 6.35 | 7.45 | 111 |
+|7       | HRNet             | 21.50 | 5.65 | 9.37 | 6.38 | 7.55 | 111 |
+|4       | modified HRNet    | 21.30 | 4.04 | 6.88 | 4.59 | 5.51 | 111 |
+|7       | modified HRNet    | 21.13 | 4.38 | 7.05 | 4.90 | 5.70 | 111 |
+
 
 loss factor: 0 + stem: densenas
-| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|original | DenseNAS          | 21.59 | 3.48 | 6.10 | 3.99 | 4.79 | 111 |
-|4        | DenseNAS          | 20.74 | 3.38| 5.88 | 3.87 | 4.62 | 111 | 
-|7        | DenseNAS          | 21.57 | 3.45 | 6.01 | 3.95 | 4.77 | 111 |
-|4        | modified DenseNAS | 5.07 | 3.48 | 6.15 | 4.00 | 4.78 | 111 |
-|7        | modified DenseNAS | 6.22 | 3.37 | 5.89 | 3.87 | 4.61 | 111 | 
-|4        | HRNet             | 5.17 | 4.38 | 10.44 | 5.57 | 7.19 | 111 |
-|7        | HRNet             | 5.89 | 3.99 | 6.80 | 4.54 | 5.44 | 111 |
-|- | darts cell based DenseNAS| 21.13 | 3.40 | 5.98 | 3.91 | 4.61 | 111 | 
+| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|original | DenseNAS          | 21.59 | 3.48 | 6.10 | 3.99 | 4.79 | 111 | 19.88 | 6.8 |
+|4        | DenseNAS          | 20.74 | 3.38| 5.88 | 3.87 | 4.62 | 111 | 22.04 | 7.4 | 
+|7        | DenseNAS          | 21.57 | 3.45 | 6.01 | 3.95 | 4.77 | 111 | 45.12 | 14.6 | 
+|4        | modified DenseNAS | 5.07 | 3.48 | 6.15 | 4.00 | 4.78 | 111 | 1.87 | 5.7 |
+|7        | modified DenseNAS | 6.22 | 3.37 | 5.89 | 3.87 | 4.61 | 111 | 2.49 | 6.8 |
+|4        | HRNet             | 5.17 | 4.38 | 10.44 | 5.57 | 7.19 | 111 | 0.45 | 3.3 |
+|4        | HRNet (re-search) | 5.41 | 3.49 | 5.99 | 3.98 | 4.70 | 111 | 2.19 | 1.9 | 
+|7        | HRNet             | 5.89 | 3.99 | 6.80 | 4.54 | 5.44 | 111 | 2.72 | 2.4 |
+|- | darts cell based DenseNAS| 21.13 | 3.40 | 5.98 | 3.91 | 4.61 | 111 | 11.21 | 5.0 |
 
 loss factor: 0 + stem: hrnet
-| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | 
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|4        |modified DenseNAS   | 20.89 | 3.97 | 6.62 | 4.49 | 5.26 | 111 |
-|7        |modified DenseNAS   | 20.89 | 4.35 | 6.93 | 4.86 | 5.62 | 111 |
-|4        | HRNet             | 5.34 | 4.34 | 7.93 | 5.05 | 6.06 | 111 |
-|7        | HRNet             | 8.03 | 4.21 | 7.05 | 4.76 | 5.47 | 111 |
+| Stack Num | search space | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4        |modified DenseNAS   | 20.89 | 3.97 | 6.62 | 4.49 | 5.26 | 111 | 2.07 | 2.8 |
+|7        |modified DenseNAS   | 20.89 | 4.35 | 6.93 | 4.86 | 5.62 | 111 | 2.62 | 2.9 |
+|4        | HRNet             | 5.34 | 4.34 | 7.93 | 5.05 | 6.06 | 111 | 1.02 | 2.2 |
+|7        | HRNet             | 8.03 | 4.21 | 7.05 | 4.76 | 5.47 | 111 | 1.15 | 2.1 |
 
 
 ##### Original DenseNAS search space (downsample 16x)(Initialized by normal)
@@ -205,6 +215,32 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |7 |0-20  | 1 | 20.87 | 3.67| 6.93 | 4.31 | 5.29 | 111 |
 |7 |0-20  | 2 | 26.09 | 3.50| 6.15 | 4.02 | 4.83 | 111 |
 |7 |10-30 | 2 | 24.28 | 3.48| 6.11 | 4.00 | 4.80 | 111 |
+
+loss factor:0   update alpha: 0-40 
+| Stack Num | stem | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | densenas   | 5.07 | 3.48 | 6.15 | 4.00 | 4.78 | 111 | 1.87 | 5.7 |
+|7 | densenas   | 6.22 | 3.37 | 5.89 | 3.87 | 4.61 | 111 | 2.49 | 6.8 | 
+|10 | densenas  | 7.25 | 3.38 | 5.73 | 3.84 | 4.57 | 111 | 3.75 | 7.7 |
+|10 | densenas  | 7.25 | 3.46 | 5.94 | 3.95 | 4.80 | 111 | 3.75 | 7.7 | 
+|4 | hrnet    | 20.89 | 3.97 | 6.62 | 4.49 | 5.26 | 111 | 2.07 | 2.8 | 
+|7 | hrnet   | 20.48 | 4.35 | 6.93 | 4.86 | 5.62 | 111 | 2.62 | 2.9 |
+|10 | hrnet  | 20.80 | 3.77 | 6.38 | 4.28 | 5.11 | 111 | 4.11 | 3.5 |
+
+Expansion 2 + Transistion 1
+| Stack Num | stem | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | densenas  | 5.95 | **3.19** | 5.78 | 3.69 | **4.44** | 111 | 5.16 | 14.3 |
+|4 | hrnet     | 20.12 | 3.52 | 6.17 | 4.04 | 4.88 | 111 | 7.45 | 5.7 |
+|7 | hrnet     | 21.41 | 3.45 | 6.01 | 3.95 | 4.73 | 111 | 11.89 | 6.1 |
+
+Transition 2
+| Stack Num | stem |channel expansion| search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | densenas  |1| 5.84 | **3.19** | **5.68** | **3.68** | 4.47 | 111 | 3.86 | 4.4 |
+|7 | densenas  |1| 7.29 | 3.28 | 5.80 | 3.77 | 4.58 | 111 | 6.32 | 6.0 |
+|10 | densenas |1| 7.03 | 3.22 | 5.71 | 3.71 | **4.44** | 111 | 6.36 | 6.7 |
+|4 | densenas  |2| 5.84 | 3.20 | 5.76 | 3.70 | **4.44** | 111 | 12.41 | 12.1 |
 
 ##### Search Space: HRNet (Initialized by normal)
 Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/MUST-AI-Lab/HRNet-Facial-Landmark-Detection/blob/master/experiments/300w/config_search_space.txt#L52)
