@@ -252,6 +252,16 @@ Detailed Config: [experiments/300w/config_search_space.txt](https://github.com/M
 |7 |noisydarts(step)| 29.38 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 |7 |noisydarts(epoch)| 28.82 | 4.46| 7.78 | 5.11 | 6.06 | 111 |
 
+loss factor 0 update 0-40 
+| Stack Num | stem | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | densenas   |  5.41 | 3.49 | 5.99 | 3.98 | 4.70 | 111 | 2.19 | 1.9 | 
+|7 | densenas   | 5.89 | 3.99 | 6.80 | 4.54 | 5.44 | 111 | 2.72 | 2.4 | 
+|10 | densenas  | 6.82 | 3.34 | 5.68 | 3.80 | 4.57 | 111 | 4.04 | 4.4 |
+|4 | hrnet    | 5.34 | 4.34 | 7.93 | 5.05 | 6.06 | 111 | 1.02 | 2.2 |
+|7 | hrnet    | 8.03 | 4.21  | 7.05 | 4.95 | 5.47 | 111 | 1.15 | 2.1  |
+|10 | hrnet  | 21.39 | 4.35 | 6.91 | 4.85 | 5.61 | 111 | 3.61 | 2.9 |
+
 ##### Search Space: Darts cell based
 | Sum/Concat | Search Space |Initialization |pretrained| Search NME | *common*| *challenge* | *full* | *test*| seed | 
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
