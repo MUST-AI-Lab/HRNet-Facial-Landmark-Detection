@@ -230,7 +230,8 @@ loss factor:0   update alpha: 0-40
 on Transistion and Channel Expansion
 | Stack Num | stem |Transistion|channel expansion| search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|4 | densenas  |1|1| 20.74| 3.38 | 5.88 | 3.87 | 4.62 | 111 | 22.04 | 7.4 |
+|4 | densenas  |1|1| 5.07 | 3.48 | 6.15 | 4.00 | 4.78 | 111 | 1.87 | 5.7 |
+|7 | densenas  |1|1| 6.22 | 3.37 | 5.89 | 3.87 | 4.61 | 111 | 2.49 | 6.8 |
 |4 | densenas  |1|2| 5.95 | **3.19** | 5.78 | 3.69 | **4.44** | 111 | 5.16 | 14.3 |
 |4 | densenas  |2|1| 5.84 | **3.19** | **5.68** | **3.68** | 4.47 | 111 | 3.86 | 4.4 |
 |7 | densenas  |2|1| 7.29 | 3.28 | 5.80 | 3.77 | 4.58 | 111 | 6.32 | 6.0 |
