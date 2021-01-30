@@ -320,6 +320,12 @@ on Search Space: Modified DenseNAS + factor0 + sum
 |True |True | hrnet    | 5.33  | 3.80 | 6.59 | 4.35 | 5.23 | 111 | 1.21 | 2.3 | 
 |False|True | hrnet    | 88.47 | 4.50 | 7.75 | 5.13 | 6.12 | 111 | 0.57 | 1.7 |
 
+
+##### Search Space: Flipped Modified DenseNAS
+| Stack Num | stem | search NME | *common*| *challenge* | *full* | *test*| seed | Params| GFLOPs|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|4 | densenas   | 5.22 | 15.62 | 22.22 | 16.91 | 18.33 | 111 | 3.05 | 2.1 |
+
 ##### Search Space: HRNet + DARTS ops (Initialized by kmnormal_fanout)
 | Stack Num | transition | search NME | *common*| *challenge* | *full* | *test*| seed |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
