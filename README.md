@@ -313,6 +313,7 @@ on the DenseNAS with head:basic block
 on Search Space: Modified DenseNAS + factor0 + sum
 |Fixed head|Darts-| stem |search NME | *common*| *challenge* | *full* | *test*| seed | Params(M) | GFLOPs |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|-    |-    | densenas | 5.07  | 3.48 | 6.15 | 4.00 | 4.78 | 111 | 1.87 | 5.7 |
 |True |False| densenas | 8.41  | 3.53 | 6.17 | 3.97 | 4.85 | 111 | 0.89 | 3.6 | 
 |True |True | densenas | 4.35  | 3.40 | 6.26 | 4.07 | 4.87 | 111 | 0.84 | 3.6 | 
 |True |False| hrnet    | 9.90  | 3.93 | 6.73 | 4.48 | 5.37 | 111 | 1.13 | 2.3 | 
